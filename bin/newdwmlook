@@ -1,0 +1,9 @@
+#!/bin/sh
+
+wall=$(find ~/.local/share/wallhaven -type f -iname "*.jpg" -o -iname "*.png" | shuf -n 1 )
+/usr/bin/feh --bg-fill $wall 2>/tmp/feh_error.log
+~/.local/bin/wal -c
+~/.local/bin/wal -i $wall >/dev/null 2>/tmp/wal_error.log
+source ~/.cache/wal/colors.sh
+
+

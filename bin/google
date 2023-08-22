@@ -1,0 +1,16 @@
+#!/bin/bash
+
+search_term=$(echo "" | dmenu -p "Enter search query:")
+
+if [ -z "$search_term" ]; then
+  echo "Search query is empty. Exiting."
+  exit 1
+fi
+
+search_url="https://www.google.com/search?q=$search_term"
+
+# Open the default web browser with the search URL
+xdg-open "$search_url" >/dev/null 2>&1 &
+
+echo "Searching for: $search_term"
+

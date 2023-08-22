@@ -1,0 +1,10 @@
+#!/bin/sh
+
+
+wall=$(find ~/.local/share/wallhaven -type f -iname "*.jpg" -o -iname "*.png" | shuf -n 1 )
+
+#feh --bg-fill $wall
+xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitoreDP-1/workspace0/last-image -s $wall
+#wal -c
+~/.local/bin/wal -i $wall >/dev/null 2>/tmp/wal_error.log
+#source ~/.cache/wal/colors.sh

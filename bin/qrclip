@@ -1,0 +1,7 @@
+#!/bin/sh
+
+clipboard_data=$(xclip -o -selection clipboard)
+qrencode -t PNG -s 8 -o /tmp/qr.png "$clipboard_data"
+sxiv  /tmp/qr.png
+
+
