@@ -78,7 +78,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", normbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
-
+#include "shiftview.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -107,6 +107,15 @@ static const Key keys[] = {
 	{ MODKEY, 	    				XK_y,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_u,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,            			XK_x,	   togglescratch,  {.ui = 2 } },
+    { MODKEY,                   	XK_comma,  shiftview,      { .i = -1 } },
+    { MODKEY,                    	XK_period,   shiftview,      { .i = 1 } },
+  /*
+    { MODKEY|ShiftMask,     		XK_g,		shifttag,   	{ .i = -1 } },
+    { MODKEY|ShiftMask,     		XK_semicolon,	shifttag,	{ .i = 1 } },
+    { MODKEY|ShiftMask,     		XK_Page_Up,	shifttag,   	{ .i = -1 } },
+    { MODKEY|ShiftMask,     		XK_Page_Down,	shifttag,	{ .i = +1 } },
+    Doesn't work properly So disabled it by removing the shifttag function in shiftview.c
+    */
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -134,5 +143,7 @@ static const Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+    { ClkTagBar,    		0,      		Button4,    	shiftview,  	{.i = -1} },
+	{ ClkTagBar,    		0,      		Button5,    	shiftview,  	{.i = 1} },
 };
 
