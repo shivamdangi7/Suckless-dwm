@@ -7,12 +7,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hermit Nerd Font:size=12:antialias=true:autohide=true","monospace:size=12:antialias=true:autohide=true" };
 static const char dmenufont[]       = "monospace:size=14";
-static const char normbgcolor[]     = "#282a36";
-static const char normbordercolor[] = "#282a36";
-static const char normfgcolor[]     = "#bd93f9";
-static const char selfgcolor[]      = "#282a36";
-static const char selbordercolor[]  = "#770000";
-static const char selbgcolor[]      = "#bd93f9";
+static const char normbgcolor[]     = "#282a36";    //grey
+static const char normbordercolor[] = "#282a36";    //grey
+static const char normfgcolor[]     = "#bd93f9";    //purple
+static const char selfgcolor[]      = "#282a36";    //grey
+static const char selbordercolor[]  = "#770000";    //red
+static const char selbgcolor[]      = "#bd93f9";    //purple
 static const char *colors[][3]      = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
@@ -75,7 +75,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", normbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 
 #include "shiftview.c"
